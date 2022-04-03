@@ -4,7 +4,7 @@ The files in this repository were used to configure the network depicted below.
 
 ![alt text](https://github.com/daicecreamman6/Azure-Cloud-Environment/blob/main/Diagrams/Azure%20cloud%20environment.png)
 
-These files have been tested and used to generate a live ELK deployment on Azure. They can be used to either recreate the entire deployment pictured above. Alternatively, select portions of the YML file may be used to install only certain pieces of it, such as Filebeat.
+These files have been tested and used to generate a live ELK deployment on Azure. They can be used to either recreate the entire deployment pictured above. Alternatively, select portions of the YML files below may be used to install only certain pieces of it, such as Filebeat.
 
   ```yaml
  (https://github.com/daicecreamman6/Azure-Cloud-Environment/blob/main/Ansible/Web%20VM%20with%20Docker%20yml.txt)
