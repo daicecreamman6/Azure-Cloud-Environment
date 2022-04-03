@@ -2,7 +2,7 @@
 
 The files in this repository were used to configure the network depicted below.
 
-![TODO: Diagram of my Azure cloud Virtual Network](C:\Users\daice\Desktop\Azure-Cloud-Environment\Diagrams\Azure cloud environment.png)
+![alt text](C:\Users\daice\Desktop\Azure-Cloud-Environment\Diagrams\Azure cloud environment.png "Cloud Diagram")
 
 These files have been tested and used to generate a live ELK deployment on Azure. They can be used to either recreate the entire deployment pictured above. Alternatively, select portions of the YML file may be used to install only certain pieces of it, such as Filebeat.
 
