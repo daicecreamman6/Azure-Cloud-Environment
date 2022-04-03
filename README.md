@@ -7,7 +7,7 @@ The files in this repository were used to configure the network depicted below.
 These files have been tested and used to generate a live ELK deployment on Azure. They can be used to either recreate the entire deployment pictured above. Alternatively, select portions of the YML file may be used to install only certain pieces of it, such as Filebeat.
 
   ```yaml
-  https://github.com/daicecreamman6/Azure-Cloud-Environment/blob/main/Ansible/Metricbeat%20and%20filebeat%20yml.txt
+ )
   ```
   
 
@@ -32,7 +32,7 @@ The configuration details of each machine may be found below.
 
 | Name     | Function | IP Address | Operating System    |
 |----------|----------|------------|------------------   |
-| Jump Box | Gateway  | 10.0.0.1   | Linux (Ubuntu 20.04)|
+| JumpBox  | Gateway  | 10.0.0.4   | Linux (Ubuntu 20.04)|
 | WEB-1    |Web server| 10.0.0.5   | Linux (Ubuntu 20.04)|
 | WEB-2    |Web server| 10.0.0.6   | Linux (Ubuntu 20.04)|
 | ELKVM    |Log server| 10.1.0.4   | Linux (Ubuntu 20.04)|
@@ -52,9 +52,9 @@ A summary of the access policies in place can be found in the table below.
 | Name     | Publicly Accessible | Allowed IP Addresses |
 |----------|---------------------|----------------------|
 | JumpBox  | Yes                 | (My Home IP)         |
-| WEB-1    | no                  | 10.0.0.4             |
-| WEB-2    | no                  | 10.0.0.4             |
-| ELKvm    | yes                 | (My home IP):5602    |
+| WEB-1    | no                  | 10.0.0.5             |
+| WEB-2    | no                  | 10.0.0.6             |
+| ELKvm    | no                  | (My home IP):5602    |
 ### Elk Configuration
 
 Ansible was used to automate configuration of the ELK machine. No configuration was performed manually, which is advantageous because they use configuration as code to easily re-deploy identical virtual machines quickly and efficiently.
