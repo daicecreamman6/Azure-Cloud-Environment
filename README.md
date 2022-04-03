@@ -6,7 +6,10 @@ The files in this repository were used to configure the network depicted below.
 
 These files have been tested and used to generate a live ELK deployment on Azure. They can be used to either recreate the entire deployment pictured above. Alternatively, select portions of the YML file may be used to install only certain pieces of it, such as Filebeat.
 
-  - filebeat-playbook.yml (Includes both filebeat and metricbeat .yml)
+  ```yaml
+  C:\Users\daice\Desktop\Azure-Cloud-Environment\Ansible\Metricbeat-and-filebeat-yml
+  ```
+  
 
 This document contains the following details:
 - Description of the Topology
