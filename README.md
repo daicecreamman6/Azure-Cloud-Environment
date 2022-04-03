@@ -6,8 +6,36 @@ The files in this repository were used to configure the network depicted below.
 
 These files have been tested and used to generate a live ELK deployment on Azure. They can be used to either recreate the entire deployment pictured above. Alternatively, select portions of the YML files below may be used to install only certain pieces of it, such as Filebeat.
 
-  ```yaml
- (https://github.com/daicecreamman6/Azure-Cloud-Environment/blob/main/Ansible/Web%20VM%20with%20Docker%20yml.txt)
+```yaml
+---
+- name: Configure Web VM with Docker
+  hosts: webserver
+  become: true
+  tasks:
+  - name: Install docker.io
+    apt:
+       update_cache: yes
+       name: docker.io
+       state: present
+  - name: Install pip3
+    apt:
+      name: python3-pip
+      state: present
+  - name: Install Docker python module
+    pip:
+      name: docker
+      state: present
+  - name: Download and launch a docker web container
+    docker_container:
+      name: dvwa
+      image: cyberxsecurity/dvwa
+      state: started
+      restart_policy: always
+      published_ports: 80:80
+  - name: Enable Docker service
+    systemd:
+      name: docker
+      enabled: yes
   ```
   ```yaml
   (https://github.com/daicecreamman6/Azure-Cloud-Environment/blob/main/Ansible/ELK%20VM%20with%20docker%20yml.txt)
