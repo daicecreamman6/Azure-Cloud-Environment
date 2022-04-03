@@ -10,8 +10,8 @@ These files have been tested and used to generate a live ELK deployment on Azure
  (https://github.com/daicecreamman6/Azure-Cloud-Environment/blob/main/Ansible/Web%20VM%20with%20Docker%20yml.txt)
   ```
   ```yaml
-  ()
-  ``
+  (https://github.com/daicecreamman6/Azure-Cloud-Environment/blob/main/Ansible/ELK%20VM%20with%20docker%20yml.txt)
+  ```
   ```yaml
   ()
   ```
