@@ -44,41 +44,41 @@ These files have been tested and used to generate a live ELK deployment on Azure
   remote_user: azureuser
   become: true
   tasks:
-    # Use apt module
-    - name: Install docker.io
+   # Use apt module
+   - name: Install docker.io
       apt:
         update_cache: yes
         force_apt_get: yes
         name: docker.io
         state: present
 
-      # Use apt module
-    - name: Install python3-pip
+   # Use apt module
+   - name: Install python3-pip
       apt:
         force_apt_get: yes
         name: python3-pip
         state: present
 
-      # Use pip module (It will default to pip3)
-    - name: Install Docker module
+   # Use pip module (It will default to pip3)
+   - name: Install Docker module
       pip:
         name: docker
         state: present
 
-      # Use command module
-    - name: Increase virtual memory
+   # Use command module
+   - name: Increase virtual memory
       command: sysctl -w vm.max_map_count=262144
 
-      # Use sysctl module
-    - name: Use more memory
+   # Use sysctl module
+   - name: Use more memory
       sysctl:
         name: vm.max_map_count
         value: "262144"
         state: present
         reload: yes
 
-      # Use docker_container module
-    - name: download and launch a docker elk container
+   # Use docker_container module
+   - name: download and launch a docker elk container
       docker_container:
         name: elk
         image: sebp/elk:761
@@ -90,14 +90,70 @@ These files have been tested and used to generate a live ELK deployment on Azure
           -  9200:9200
           -  5044:5044
 
-      # Use systemd module
-    - name: Enable service docker on boot
+   # Use systemd module
+   - name: Enable service docker on boot
       systemd:
         name: docker
         enabled: yes
 ```        
 ```yaml
-  (https://github.com/daicecreamman6/Azure-Cloud-Environment/blob/main/Ansible/Metricbeat%20and%20filebeat%20yml.txt)
+---
+- name: installing and launching filebeat and metricbeat
+  hosts: webservers
+  become: yes
+  tasks:
+
+  - name: download filebeat deb
+    command: curl -L -O https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-7.4.0-amd64.deb
+
+  - name: install filebeat deb
+    command: dpkg -i filebeat-7.4.0-amd64.deb
+
+  - name: drop in filebeat.yml
+    copy:
+      src: /etc/ansible/files/filebeat-config.yml
+      dest: /etc/filebeat/filebeat.yml
+
+  - name: enable and configure system module
+    command: filebeat modules enable system
+
+  - name: setup filebeat
+    command: filebeat setup
+
+  - name: start filebeat service
+    command: service filebeat start
+
+  - name: enable service filebeat on boot
+    systemd:
+      name: filebeat
+      enabled: yes
+      
+#install metricbeat
+
+  - name: download metricbeat deb
+    command: curl -L -O https://artifacts.elastic.co/downloads/beats/metricbeat/metricbeat-7.4.0-amd64.deb
+
+  - name: install metricbeat deb
+    command: dpkg -i metricbeat-7.4.0-amd64.deb
+
+  - name: drop in metricbeat.yml
+    copy:
+      src: /etc/ansible/files/metricbeat-config.yml
+      dest: /etc/metricbeat/metricbeat.yml
+
+  - name: enable and configure docker module for metricbeat
+    command: metricbeat modules enable docker
+
+  - name: setup metricbeat
+    command: metricbeat setup
+
+  - name: start metricbeat service
+    command: service metricbeat start
+
+  - name: enable service metricbeat on boot
+    systemd:
+      name: metricbeat
+      enabled: yes
   ```
   
 
