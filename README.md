@@ -211,7 +211,7 @@ The playbook implements the following tasks:
 
 - Download and install Elk container and maps port 5601 to 5601 and 9200 t0 9200
 
-![The following screenshot displays the result of running `docker ps` after successfully configuring the ELK instance](Images/docker_ps_output.png)
+![The following screenshot displays the result of running `docker ps` after successfully configuring the ELK instance](Images/Docker ps.PNG)
 
 ### Target Machines & Beats
 This ELK server is configured to monitor the following machines:
